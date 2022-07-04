@@ -1,0 +1,83 @@
+@use 'reset';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap');
+
+// CONTAINER VARIABLE
+$largureContainer: reset.toRem(1040); // Adicionar 40px no valor do container para uso de padding no responsivo 
+
+// VARIABLES
+$ColorMain:#283a51;
+$ColorOne:#1f2f44;
+$ColorTwo:#6cbb69;
+$ColorThree:#ffffff;
+
+/**/
+
+body {
+   background:$ColorMain;
+   font-family: 'Poppins', sans-serif;
+   color:$ColorThree;
+   font-weight:400;
+   letter-spacing: 0.1em;
+}
+
+p {
+   font-family: 'Poppins', sans-serif;
+   line-height: 1.7;
+   font-weight: 400;
+   margin-bottom: 20px;
+   font-size: reset.toRem(16);
+   color: $ColorThree;
+   letter-spacing: 0.4px;
+}
+
+// BREAKPOINTS
+
+@mixin breakpoint($point) {
+    @if $point == smashDesktopLarge {
+      @media screen and (max-width: 87.5rem) { @content ; } // 1400px
+   }
+   @else if $point == smashDesktop {
+      @media (max-width: 75rem) { @content ; } //1200px
+   }
+   @else if $point == smashLaptop {
+      @media (max-width: 64rem) { @content ; } //1024px
+   }
+     @else if $point == smashTabletBig {
+      @media (max-width: 56.25rem) { @content ; } //900px
+   }
+    @else if $point == smashTablet {
+      @media (max-width: 37.5rem)  { @content ; } //600px
+   }
+   @else if $point == smashMobile {
+      @media (max-width: 25rem)  { @content ; } //400px
+   }
+
+   @else if $point == smashContainer {
+    @media (max-width: $largureContainer)  { @content ; }
+   }
+}
+
+
+
+/*CONTAINER*/
+
+.container {
+  margin:0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+   max-width: $largureContainer;
+}
+
+// largureContainer -> BREAKPOINT DA LARGURA DO CONTAINER
+
+// TABLET BIG - 900px
+@include breakpoint(smashTabletBig) {
+   p {
+      font-size: reset.toRem(15);
+      line-height: 1.5;
+   }
+}
+
